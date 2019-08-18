@@ -48,10 +48,41 @@ public:
   }
 };
 
+ListNode* toListNode(int num){
+  ListNode *l = new ListNode(0);
+  ListNode *p = l;
+  while(num){
+    p->next = new ListNode(num % 10);
+    p = p->next;
+    num = num / 10;
+  }
+  return l->next;
+}
+
 bool show_2(int setwidth){
   const string title = "2.Add Two Numbers";
 
-  string prompt = 1 ? "pass" : "fail";
+  int num1 = 342;
+  int num2 = 465;
+  int num3 = num1 + num2;
+  ListNode *l1 = toListNode(num1);
+  ListNode *l2 = toListNode(num2);
+  ListNode *l3 = toListNode(num3);
+  ListNode *output = NULL;
+
+  Solution Program;
+
+  output = Program.addTwoNumbers(l1,l2);
+  bool result = true;
+
+  while(l3 != NULL && output != NULL){
+    if(l3->val != output -> val){ result = false; break; }
+    l3 = l3->next; 
+    output = output->next;
+  }
+  if(l3!=NULL || output!=NULL){ result = false; }
+
+  string prompt = result ? "pass" : "fail";
   cout << setiosflags(ios::left) << setw(setwidth) << title << prompt << endl;
-  return 1;
+  return result;
 }

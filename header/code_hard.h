@@ -13,6 +13,6 @@
 
 using namespace std;
 
-const int defaultwidth = 30;
+#define SETW 64
 
-bool show_4(int setwidth = defaultwidth);
+bool show_4(int setwidth = SETW);
