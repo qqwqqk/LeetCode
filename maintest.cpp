@@ -1,47 +1,40 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <map>
 using namespace std;
 
-int findPosIndex(vector<int> nums, int target){
-  for (int i = 0; i <= nums.size() - 1; i++){
-    if (nums[i] == target){
-      // cout << "pos: " << i << endl;
-      return i;
+vector<int> findMode(vector<int> nums){
+  vector<int> res;
+  map<int,int> caches;
+  int count = 0;
+  for(int i=0;i<nums.size();i++){
+    map<int,int>::iterator iter = caches.find(nums[i]);
+    if(iter == caches.end()){
+      caches.insert(pair<int,int> (nums[i],1));
+    } else {
+      int tag = iter->second + 1;
+      iter->second = tag;
+      if(tag == count){ res.push_back(iter->first); }
+      if(tag > count){
+        count = tag;
+        res.clear();
+        res.push_back(iter->first);
+      }
     }
   }
-  return -1;
-}
-
-vector<int> nums_ori;
-int sortWithLeastExchange(vector<int> &nums){
-  nums_ori = nums;
-  int count = 0;
-  sort(nums.begin(), nums.end());
-
-  for (int i = 0; i < nums.size() - 1; i++){
-    int posIndex = findPosIndex(nums_ori, nums[i]);
-    if (posIndex == i) continue;
-    // cout << "exhange: " << nums_ori[i] << ":" << nums_ori[posIndex] << endl;
-    swap(nums_ori[i], nums_ori[posIndex]);
-    
-    count++;
-  }
-  return count;
+  return res;
 }
 
 int main()
 {
-  int n;
-  int cache;
-  int res;
-  vector<int> nums;
-  cin>>n;
-  for(int i=0; i<n*n; i++){
-    cin>>cache;
-    nums.push_back(cache);
+  vector<int> cache={1,2,3,4,5,2,2,3,3,1,1,3,1};
+  vector<int> res;
+
+  res = findMode(cache);
+  
+  for(int i=0; i<res.size(); i++){
+    cout<<res[i]<<endl;
   }
-  res = sortWithLeastExchange(nums);
-  cout << res <<endl;
   return 0;
 }
