@@ -10,6 +10,7 @@
 
 #include<cmath>
 #include<iomanip>
+#include<algorithm>
 
 using namespace std;
 
@@ -22,3 +23,4 @@ bool show_6(int setwidth = SETW);         //Z 字形变换
 bool show_8(int setwidth = SETW);         //字符串转换整数 (atoi)
 bool show_11(int setwidth = SETW);        //盛最多水的容器 
 bool show_12(int setwidth = SETW);        //整数转罗马数字 
+bool show_15(int setwidth = SETW);        //三数之和
