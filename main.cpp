@@ -1,64 +1,50 @@
 #include "header/code_other.h"
  
+#include "../header/code_medium.h"
+ 
 class Solution {
 public:
-    vector<string> letterCombinations(string digits) {
-        map<int,string> dictionary;
-        dictionary.insert(pair<int, string> (2,"abc"));
-        dictionary.insert(pair<int, string> (3,"def"));
-        dictionary.insert(pair<int, string> (4,"ghi"));
-        dictionary.insert(pair<int, string> (5,"jkl"));
-        dictionary.insert(pair<int, string> (6,"mno"));
-        dictionary.insert(pair<int, string> (7,"pqrs"));
-        dictionary.insert(pair<int, string> (8,"tuv"));
-        dictionary.insert(pair<int, string> (9,"wxyz"));
+    int threeSumClosest(vector<int>& nums, int target) {
+        sort(nums.begin(),nums.end());
+        int length = nums.size(); 
 
-        queue<string> queuelist;
-        queuelist.push(digits);
-        while(1){
-          int nums = queuelist.size();
-          string str = queuelist.front();
-          for(int i=0; i < str.size(); i++){
-            if(str[i] > '0' && str[i] <= '9'){
-              int key = str[i] - '0';
-              queuelist.pop();
-              string temp = dictionary[key];
-              for(int j=0; j<temp.size(); j++){
-                str[i] = temp[j];
-                queuelist.push(str);
+        int val;
+        int distance;
+        int mindistance = -1;
+        
+        for(int i = 0; i<length; i++){
+          if(i>0 && nums[i-1] == nums[i]){ continue; }
+          for(int j = i + 1; j<length; j++){
+            if(j> i+1 && nums[j-1] == nums[j]){ continue; }
+            for(int k = j + 1; k<length; k++){
+              if(k> j+1 && nums[k-1] == nums[k]){ continue; }
+              int pos = nums[i]+nums[j]+nums[k] - target;
+              distance = pos > 0 ? pos : -pos;
+
+              if(mindistance == -1 || mindistance > distance){
+                mindistance = distance;
+                val = nums[i]+nums[j]+nums[k];
               }
-              break;
+
+              if(pos > 0){ continue; }
             }
           }
-
-          if(queuelist.size() <= nums){ break; }
         }
 
-        vector<string> result;
-        while(!queuelist.empty()){
-          string item = queuelist.front();
-          if(item.size() > 0){ result.push_back(item); }
-          queuelist.pop();
-        }
-
-        return result;
+        return val;
     }
 };
 
 int main(){
-  const string title = "17.Letter Combinations of a Phone Number";
-  string digits = "";
-  vector<string> output = {"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"};
+  const string title = "16.3Sum Closest";
+  vector<int> nums = {0,0,0};
+  int target = 1;
+  int output = 0;
   Solution Program;
 
-  vector<string> cache = Program.letterCombinations(digits);
-  bool result = true;
-  for(int i=0; i<output.size(); i++){
-    result = output[i] == cache[i];
-    if(!result) { break; }
-  }
+  bool result = output == Program.threeSumClosest(nums,target);
   
   string prompt = result ? "pass" : "fail";
-  cout << setiosflags(ios::left) << setw(64) << title << prompt << endl;
+  cout << setiosflags(ios::left) << setw(setwidth) << title << prompt << endl;
   return 0;
 }
