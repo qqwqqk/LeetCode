@@ -1,4 +1,4 @@
-#include "header/code_other.h"
+#include "../header/code_medium.h"
  
 class Solution {
 public:
@@ -45,9 +45,9 @@ public:
     }
 };
 
-int main(){
+bool show_17(int setwidth){
   const string title = "17.Letter Combinations of a Phone Number";
-  string digits = "";
+  string digits = "23";
   vector<string> output = {"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"};
   Solution Program;
 
@@ -59,6 +59,6 @@ int main(){
   }
   
   string prompt = result ? "pass" : "fail";
-  cout << setiosflags(ios::left) << setw(64) << title << prompt << endl;
-  return 0;
+  cout << setiosflags(ios::left) << setw(setwidth) << title << prompt << endl;
+  return result;
 }

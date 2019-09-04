@@ -1,19 +1,25 @@
-#include <algorithm>
-#include <vector>
-#include <map>
-
-#include<iostream>
-#include<cmath>
-#include<iomanip>
-
-#include "header/code_other.h"
+#include "header/code_easy.h"
+#include "header/code_medium.h"
+#include "header/code_hard.h"
+#include <stdlib.h>
 using namespace std;
 
-
-int main()
-{
-  for(int i=0; i<100; i++){
-    if(is_prime(i)){cout<< i <<'\t';}
-  }
-  return 0;
+int main(){
+  show_1();
+  show_2();
+  show_3();
+  show_4();
+  show_5();
+  show_6();
+  show_7();
+  show_8();
+  show_9();
+  show_10();
+  show_11();
+  show_12();
+  show_13();
+  show_14();
+  show_15();
+  show_16();
+  show_17();
 }
