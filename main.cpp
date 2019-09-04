@@ -5,5 +5,5 @@
 using namespace std;
 
 int main(){
-  show_10();
+  show_16();
 }

@@ -6,6 +6,7 @@
 #include<string>
 #include<set>
 #include<map>
+#include<stack>
 #include<vector>
 
 #include<cmath>
@@ -24,3 +25,4 @@ bool show_8(int setwidth = SETW);         //字符串转换整数 (atoi)
 bool show_11(int setwidth = SETW);        //盛最多水的容器 
 bool show_12(int setwidth = SETW);        //整数转罗马数字 
 bool show_15(int setwidth = SETW);        //三数之和
+bool show_16(int setwidth = SETW);        //最接近三数之和
