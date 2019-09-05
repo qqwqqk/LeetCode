@@ -1,4 +1,4 @@
-#include "header/code_other.h"
+#include "../header/code_medium.h"
 
 class Solution {
 public:
@@ -34,7 +34,7 @@ public:
     }
 };
 
-int main(){
+bool show_18(int setwidth){
   const string title = "18.4 Sum";
   vector<int> input = {1, 0, -1, 0, -2, 2};
   int target = 0;
@@ -51,6 +51,6 @@ int main(){
   }
   
   string prompt = result ? "pass" : "fail";
-  cout << setiosflags(ios::left) << setw(64) << title << prompt << endl;
-  return 0;
+  cout << setiosflags(ios::left) << setw(setwidth) << title << prompt << endl;
+  return result;
 }
