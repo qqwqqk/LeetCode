@@ -1,25 +1,14 @@
-#include "header/code_easy.h"
-#include "header/code_medium.h"
-#include "header/code_hard.h"
-#include <stdlib.h>
-using namespace std;
+#include "header/code_method.h"
+#include <gtest/gtest.h>
 
-int main(){
-  show_1();
-  show_2();
-  show_3();
-  show_4();
-  show_5();
-  show_6();
-  show_7();
-  show_8();
-  show_9();
-  show_10();
-  show_11();
-  show_12();
-  show_13();
-  show_14();
-  show_15();
-  show_16();
-  show_17();
+TEST(testCase, Factorial){
+  EXPECT_EQ(getFactorial(1), 1);
+  EXPECT_EQ(getFactorial(3), 3);
+  EXPECT_EQ(getFactorial(5), 120);
+}
+
+TEST(testCase, is_prime){
+  EXPECT_FALSE(is_prime(1));
+  EXPECT_TRUE(is_prime(2));
+  EXPECT_FALSE(is_prime(4));
 }
